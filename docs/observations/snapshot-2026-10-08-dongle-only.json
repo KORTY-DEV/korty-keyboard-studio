@@ -1,0 +1,108 @@
+{
+  "Label": "\u0442\u043E\u043B\u044C\u043A\u043E \u0434\u043E\u043D\u0433\u043B (2.4G), \u043A\u0430\u0431\u0435\u043B\u044C \u043E\u0442\u043A\u043B\u044E\u0447\u0451\u043D",
+  "CapturedAt": "2026-10-08T22:53:31.3995261+04:00",
+  "Interfaces": [
+    {
+      "Fingerprint": "0C45:FDFD|MI00|COL--|0001/0006|9/2/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "0001/0006",
+      "InterfaceNumber": 0,
+      "Collection": null,
+      "In": 9,
+      "Out": 2,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI01|COL--|0001/0002|6/0/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "0001/0002",
+      "InterfaceNumber": 1,
+      "Collection": null,
+      "In": 6,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI02|COL01|000C/0001|3/0/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "000C/0001",
+      "InterfaceNumber": 2,
+      "Collection": 1,
+      "In": 3,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI02|COL02|0001/0080|2/0/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "0001/0080",
+      "InterfaceNumber": 2,
+      "Collection": 2,
+      "In": 2,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI02|COL03|0001/0006|16/0/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "0001/0006",
+      "InterfaceNumber": 2,
+      "Collection": 3,
+      "In": 16,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI02|COL04|0001/000E|9/0/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "0001/000E",
+      "InterfaceNumber": 2,
+      "Collection": 4,
+      "In": 9,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI02|COL05|FFFF/0001|4/0/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "FFFF/0001",
+      "InterfaceNumber": 2,
+      "Collection": 5,
+      "In": 4,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI03|COL--|FF60/0061|33/33/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "FF60/0061",
+      "InterfaceNumber": 3,
+      "Collection": null,
+      "In": 33,
+      "Out": 33,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI04|COL--|FF60/0061|65/65/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "FF60/0061",
+      "InterfaceNumber": 4,
+      "Collection": null,
+      "In": 65,
+      "Out": 65,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    }
+  ],
+  "Pids": [
+    "0C45:FDFD"
+  ]
+}

@@ -1,0 +1,160 @@
+<UserControl x:Class="Korty.App.Views.RgbView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:Korty.App.Controls"
+             xmlns:local="clr-namespace:Korty.App.Views">
+    <Grid>
+        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="400"/></Grid.ColumnDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,20,0">
+            <StackPanel>
+                <Border Style="{StaticResource Card}">
+                    <StackPanel>
+                        <DockPanel>
+                            <Border DockPanel.Dock="Right" Background="{StaticResource Surface2Brush}" CornerRadius="9" Padding="3">
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton Style="{StaticResource Segment}" GroupName="rgbTarget" Content="USB-C" IsChecked="{Binding UsbTarget, Mode=TwoWay}"/>
+                                    <RadioButton Style="{StaticResource Segment}" GroupName="rgbTarget" Content="2.4 GHz" IsChecked="{Binding WirelessTarget, Mode=TwoWay}"/>
+                                </StackPanel>
+                            </Border>
+                            <StackPanel>
+                                <TextBlock Text="Предпросмотр подсветки" Style="{StaticResource H2}"/>
+                                <TextBlock Text="{Binding Summary}" Style="{StaticResource Muted}" Margin="0,3,0,0"/>
+                            </StackPanel>
+                        </DockPanel>
+                        <c:KeyboardView x:Name="Kb" Margin="0,14,0,0" KeyColor="{Binding PreviewColor}" Brightness="{Binding PreviewBrightness}" Active="True" ScreenCaption="TFT" Mode="{Binding Mode}" Speed="{Binding Speed}" Direction="{Binding Direction}" Rainbow="{Binding Rainbow}" Animate="{Binding AnimatePreview}"/>
+                        <TextBlock Style="{StaticResource Muted}" Margin="0,8,0,0"
+                                   Text="Локальный приблизительный предпросмотр (HID не используется): учитывает режим, цвет, яркость, скорость и направление. Нажимайте клавиши на схеме или на клавиатуре — реагируют Key on/off, Взрыв, Запуск, Рябь. Реальный вид эффектов оценивайте на самой клавиатуре."/>
+                        <CheckBox Content="Анимация предпросмотра" IsChecked="{Binding AnimatePreview}" Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource Card}" Margin="0,16,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Готовые эффекты" Style="{StaticResource H2}"/>
+                        <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,10" Text="Один клик подбирает режим, цвет, яркость и скорость. Результат виден в предпросмотре выше; на клавиатуру уходит после «Применить»."/>
+                        <ItemsControl ItemsSource="{Binding Presets}">
+                            <ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel/></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Margin="0,0,8,8" Padding="12,7" ToolTip="{Binding Description}" Click="OnPreset" Tag="{Binding}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Ellipse Width="10" Height="10" Fill="{Binding Swatch}" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{Binding Name}"/>
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource Card}" Margin="0,16,0,0">
+                    <StackPanel>
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding ModeName}" Foreground="{StaticResource AccentBrush}" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                            <TextBlock Text="Режим эффекта" Style="{StaticResource H2}"/>
+                        </DockPanel>
+                        <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,10" Text="Названия — из эталонного веб-конфигуратора (наведите курсор на кнопку). Результат смотрите на самой клавиатуре."/>
+                        <ItemsControl ItemsSource="{Binding Modes}">
+                            <ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel/></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton Style="{StaticResource Chip}" GroupName="rgbMode" Margin="0,0,6,6" Content="{Binding Label}" ToolTip="{Binding Name}"
+                                                 Tag="{Binding Index}" Loaded="OnModeLoaded" Checked="OnModeChecked"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Border Style="{StaticResource Card}" BorderBrush="{StaticResource AccentBrush}" Visibility="{Binding ShowEnable, Converter={StaticResource B2V}}" Margin="0,0,0,12" Padding="14">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource Muted}" Text="Управление клавиатурой выключено — программа пока только читает. Включите его один раз (одно подтверждение), чтобы применять настройки."/>
+                        <Button Style="{StaticResource PrimaryButton}" Content="Включить управление клавиатурой" Command="{Binding EnableControlCommand}" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource Card}">
+                    <StackPanel>
+                        <TextBlock Text="Цвет" Style="{StaticResource H2}"/>
+                        <ItemsControl ItemsSource="{x:Static local:RgbSwatches.All}" Margin="0,10,0,6">
+                            <ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel/></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Width="30" Height="30" Margin="0,0,7,7" Padding="0" Background="{Binding}" Tag="{Binding}" Click="OnSwatch" ToolTip="{Binding}" BorderBrush="#33FFFFFF"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <Grid Margin="0,4,0,0">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                            <Border Width="38" Height="38" CornerRadius="8" Background="{Binding PrimaryBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"/>
+                            <TextBox Grid.Column="1" Margin="10,0,0,0" Text="{Binding PrimaryHex, UpdateSourceTrigger=LostFocus}" FontFamily="{StaticResource MonoFont}" VerticalContentAlignment="Center"/>
+                        </Grid>
+                        <TextBlock Text="R" Style="{StaticResource Caption}" Margin="0,12,0,0"/>
+                        <Slider Minimum="0" Maximum="255" Value="{Binding Red}" SmallChange="1" LargeChange="16"/>
+                        <TextBlock Text="G" Style="{StaticResource Caption}"/>
+                        <Slider Minimum="0" Maximum="255" Value="{Binding Green}" SmallChange="1" LargeChange="16"/>
+                        <TextBlock Text="B" Style="{StaticResource Caption}"/>
+                        <Slider Minimum="0" Maximum="255" Value="{Binding Blue}" SmallChange="1" LargeChange="16"/>
+                        <TextBlock Text="ОТТЕНОК · НАСЫЩЕННОСТЬ · ЯРКОСТЬ ЦВЕТА (HSV)" Style="{StaticResource Caption}" Margin="0,12,0,0"/>
+                        <Slider Minimum="0" Maximum="360" Value="{Binding Hue}"/>
+                        <Slider Minimum="0" Maximum="100" Value="{Binding Sat}"/>
+                        <Slider Minimum="0" Maximum="100" Value="{Binding Val}"/>
+                        <TextBlock Text="{Binding ColorHint}" Style="{StaticResource Muted}" Foreground="{StaticResource WarnBrush}"/>
+                        <DockPanel Margin="0,10,0,4"><Button DockPanel.Dock="Right" Content="Сохранить цвет" Command="{Binding SaveColorCommand}" Padding="10,4" FontSize="12"/><TextBlock Text="МОИ ЦВЕТА" Style="{StaticResource Caption}" VerticalAlignment="Center"/></DockPanel>
+                        <ItemsControl ItemsSource="{Binding CustomColors}">
+                            <ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel/></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Width="26" Height="26" Margin="0,0,6,6" Padding="0" Background="{Binding}" Tag="{Binding}" Click="OnSwatch" ToolTip="Применить. Правая кнопка — удалить" BorderBrush="#33FFFFFF" MouseRightButtonUp="OnRemoveColor"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <CheckBox Content="Радужный / вариативный цвет (colorMode &gt; 0)" IsChecked="{Binding Rainbow}" Margin="0,12,0,0"/>
+                        <TextBlock Text="Вторичный цвет" Style="{StaticResource Caption}" Margin="0,12,0,4"/>
+                        <TextBox Text="{Binding SecondaryHex, UpdateSourceTrigger=LostFocus}" FontFamily="{StaticResource MonoFont}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource Card}" Margin="0,16,0,0">
+                    <StackPanel>
+                        <DockPanel><TextBlock DockPanel.Dock="Right" Text="{Binding Brightness}" Style="{StaticResource Mono}"/><TextBlock Text="Яркость (0–5)" Style="{StaticResource H2}"/></DockPanel>
+                        <Slider Minimum="0" Maximum="5" Value="{Binding Brightness}" TickFrequency="1" IsSnapToTickEnabled="True" Margin="0,8,0,10"/>
+                        <DockPanel><TextBlock DockPanel.Dock="Right" Text="{Binding Speed}" Style="{StaticResource Mono}"/><TextBlock Text="Скорость (0–5)" Style="{StaticResource H2}"/></DockPanel>
+                        <Slider Minimum="0" Maximum="5" Value="{Binding Speed}" TickFrequency="1" IsSnapToTickEnabled="True" Margin="0,8,0,10"/>
+                        <DockPanel><TextBlock DockPanel.Dock="Right" Text="{Binding Direction}" Style="{StaticResource Mono}"/><TextBlock Text="Направление (только для направленных эффектов)" Style="{StaticResource H2}" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"/></DockPanel>
+                        <Slider Minimum="0" Maximum="3" Value="{Binding Direction}" TickFrequency="1" IsSnapToTickEnabled="True" Margin="0,8,0,0" IsEnabled="{Binding DirectionEnabled}"/>
+                        <TextBlock Text="0 ← · 1 ↓ · 2 ↑ · 3 → · действует для эффектов: Прокрутка, Волна, Поток, Наклон" Style="{StaticResource Muted}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource Card}" Margin="0,16,0,0">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource Muted}" Text="Настройки автоматически сохраняются в профиль выбранного подключения (USB-C и 2.4 GHz хранятся раздельно)."/>
+                        <Button Content="Показать пакеты (dry-run)" Command="{Binding ShowPacketsCommand}" Margin="0,12,0,0"/>
+                        <Button Style="{StaticResource PrimaryButton}" Content="{Binding ApplyText}" Command="{Binding ApplyCommand}" Margin="0,8,0,0"/>
+                        <ItemsControl ItemsSource="{Binding Readiness}" Margin="0,12,0,0" Visibility="{Binding ShowReadiness, Converter={StaticResource B2V}}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,2">
+                                        <Grid.ColumnDefinitions><ColumnDefinition Width="20"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Mark}" Foreground="{Binding Brush}" FontWeight="Bold"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Title}" FontWeight="SemiBold" FontSize="12" Margin="0,0,8,0" TextWrapping="NoWrap"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding Detail}" Style="{StaticResource Muted}" FontSize="11.5"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <TextBlock Text="{Binding BlockReason}" Foreground="{StaticResource WarnBrush}" Style="{StaticResource Muted}" Margin="0,10,0,0"
+                                   Visibility="{Binding HasBlockReason, Converter={StaticResource B2V}}"/>
+                        <TextBox Text="{Binding DryRunText, Mode=OneWay}" IsReadOnly="True" FontFamily="{StaticResource MonoFont}" FontSize="11" Margin="0,10,0,0" TextWrapping="Wrap" MaxHeight="220" VerticalScrollBarVisibility="Auto"
+                                 Visibility="{Binding HasDryRun, Converter={StaticResource B2V}}"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

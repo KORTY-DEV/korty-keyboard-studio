@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>Korty.Hid.Windows</RootNamespace>
+    <AssemblyName>Korty.Hid.Windows</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Korty.Core\Korty.Core.csproj" />
+  </ItemGroup>
+</Project>

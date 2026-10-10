@@ -1,0 +1,12 @@
+bin/
+obj/
+.build/
+.vs/
+*.user
+TestResults/
+# build outputs (publish with Build-Release.ps1)
+dist/
+release/
+# local data / user content
+assets/korty-display/
+*.trx

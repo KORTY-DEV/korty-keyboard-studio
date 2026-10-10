@@ -1,0 +1,58 @@
+<UserControl x:Class="Korty.App.Views.SimulatorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel MaxWidth="900" HorizontalAlignment="Left">
+            <Border Style="{StaticResource Card}" Visibility="{Binding Disabled, Converter={StaticResource B2V}}" BorderBrush="{StaticResource InfoBrush}">
+                <StackPanel>
+                    <TextBlock Text="Симулятор выключен" Style="{StaticResource H2}"/>
+                    <TextBlock Style="{StaticResource Muted}" Margin="0,4,0,10" Text="Программа читает дескрипторы реального оборудования. В режиме симуляции вместо него используется программная клавиатура: можно проверить редактор, загрузку, восстановление и обработку подключений без риска."/>
+                    <Button Style="{StaticResource PrimaryButton}" Content="Включить симуляцию" Command="{Binding EnableCommand}" HorizontalAlignment="Left"/>
+                </StackPanel>
+            </Border>
+
+            <StackPanel Visibility="{Binding Enabled, Converter={StaticResource B2V}}">
+                <Border Style="{StaticResource Card}">
+                    <StackPanel>
+                        <TextBlock Text="Подключение симулятора" Style="{StaticResource H2}"/>
+                        <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,10" Text="Переключайте как физическое подключение: приложение увидит это так же, как смену кабеля/донгла."/>
+                        <Border Background="{StaticResource Surface2Brush}" CornerRadius="9" Padding="3" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton Style="{StaticResource Segment}" GroupName="simConn" Content="Нет" IsChecked="{Binding ConnNone, Mode=TwoWay}"/>
+                                <RadioButton Style="{StaticResource Segment}" GroupName="simConn" Content="USB-C" IsChecked="{Binding ConnUsb, Mode=TwoWay}"/>
+                                <RadioButton Style="{StaticResource Segment}" GroupName="simConn" Content="Донгл 2.4 GHz" IsChecked="{Binding ConnWireless, Mode=TwoWay}"/>
+                                <RadioButton Style="{StaticResource Segment}" GroupName="simConn" Content="Оба" IsChecked="{Binding ConnBoth, Mode=TwoWay}"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource Card}" Margin="0,14,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Сценарии" Style="{StaticResource H2}"/>
+                        <CheckBox Margin="0,12,0,0" IsChecked="{Binding WirelessControl}" Content="Донгл пробрасывает управляющие отчёты (если выключено — как предполагает kabelklaus)"/>
+                        <CheckBox Margin="0,10,0,0" IsChecked="{Binding ResetOnSwitch}" Content="Гипотеза H1: экран сбрасывается в чёрный при каждой смене подключения"/>
+                        <CheckBox Margin="0,10,0,0" IsChecked="{Binding Decoys}" Content="Добавить посторонние HID (мышь, веб-камера с VID 0C45) — они не должны быть задействованы"/>
+                        <DockPanel Margin="0,12,0,0">
+                            <TextBlock Text="Сбой записи после N пакетов (пусто — нет):" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <TextBox Text="{Binding FailAfter, UpdateSourceTrigger=PropertyChanged}" Width="80" HorizontalAlignment="Left"/>
+                        </DockPanel>
+                        <Button Content="Сделать экран чёрным" Command="{Binding BlankScreenCommand}" HorizontalAlignment="Left" Margin="0,14,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource Card}" Margin="0,14,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Состояние симулированной клавиатуры" Style="{StaticResource H2}"/>
+                        <TextBlock Text="{Binding State}" Style="{StaticResource Mono}" Margin="0,8,0,10"/>
+                        <ItemsControl ItemsSource="{Binding Journal}">
+                            <ItemsControl.ItemTemplate><DataTemplate><TextBlock Text="{Binding}" Style="{StaticResource Mono}" FontSize="11" Foreground="{StaticResource MutedBrush}"/></DataTemplate></ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+                <TextBlock Style="{StaticResource Muted}" Margin="2,12,0,0"
+                           Text="Симулятор реализует только описанное в открытых источниках поведение выбранного семейства протокола. Его «успех» не доказывает, что реальная прошивка работает так же."/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

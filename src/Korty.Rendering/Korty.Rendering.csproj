@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>Korty.Rendering</RootNamespace>
+    <AssemblyName>Korty.Rendering</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Korty.Core\Korty.Core.csproj" />
+  </ItemGroup>
+</Project>

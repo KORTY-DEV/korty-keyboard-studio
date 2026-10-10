@@ -1,0 +1,197 @@
+{
+  "Label": "C \u00B7 \u043A\u0430\u0431\u0435\u043B\u044C \u0438 \u0434\u043E\u043D\u0433\u043B \u0432\u043C\u0435\u0441\u0442\u0435 (USB-\u0440\u0435\u0436\u0438\u043C, 2026-10-09)",
+  "CapturedAt": "2026-10-09T00:07:47.840101+04:00",
+  "Interfaces": [
+    {
+      "Fingerprint": "0C45:8009|MI00|COL--|0001/0006|9/2/0",
+      "VidPid": "0C45:8009",
+      "Usage": "0001/0006",
+      "InterfaceNumber": 0,
+      "Collection": null,
+      "In": 9,
+      "Out": 2,
+      "Feature": 0,
+      "ProductName": "AK820"
+    },
+    {
+      "Fingerprint": "0C45:8009|MI01|COL01|000C/0001|3/0/0",
+      "VidPid": "0C45:8009",
+      "Usage": "000C/0001",
+      "InterfaceNumber": 1,
+      "Collection": 1,
+      "In": 3,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "AK820"
+    },
+    {
+      "Fingerprint": "0C45:8009|MI01|COL02|0001/0080|2/0/0",
+      "VidPid": "0C45:8009",
+      "Usage": "0001/0080",
+      "InterfaceNumber": 1,
+      "Collection": 2,
+      "In": 2,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "AK820"
+    },
+    {
+      "Fingerprint": "0C45:8009|MI01|COL03|0001/0006|16/0/0",
+      "VidPid": "0C45:8009",
+      "Usage": "0001/0006",
+      "InterfaceNumber": 1,
+      "Collection": 3,
+      "In": 16,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "AK820"
+    },
+    {
+      "Fingerprint": "0C45:8009|MI01|COL04|0001/0002|5/0/0",
+      "VidPid": "0C45:8009",
+      "Usage": "0001/0002",
+      "InterfaceNumber": 1,
+      "Collection": 4,
+      "In": 5,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "AK820"
+    },
+    {
+      "Fingerprint": "0C45:8009|MI01|COL05|FFFF/0001|4/0/0",
+      "VidPid": "0C45:8009",
+      "Usage": "FFFF/0001",
+      "InterfaceNumber": 1,
+      "Collection": 5,
+      "In": 4,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "AK820"
+    },
+    {
+      "Fingerprint": "0C45:8009|MI02|COL--|FF68/0061|65/4097/0",
+      "VidPid": "0C45:8009",
+      "Usage": "FF68/0061",
+      "InterfaceNumber": 2,
+      "Collection": null,
+      "In": 65,
+      "Out": 4097,
+      "Feature": 0,
+      "ProductName": "AK820"
+    },
+    {
+      "Fingerprint": "0C45:8009|MI03|COL--|FF13/0001|65/65/65",
+      "VidPid": "0C45:8009",
+      "Usage": "FF13/0001",
+      "InterfaceNumber": 3,
+      "Collection": null,
+      "In": 65,
+      "Out": 65,
+      "Feature": 65,
+      "ProductName": "AK820"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI00|COL--|0001/0006|9/2/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "0001/0006",
+      "InterfaceNumber": 0,
+      "Collection": null,
+      "In": 9,
+      "Out": 2,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI01|COL--|0001/0002|6/0/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "0001/0002",
+      "InterfaceNumber": 1,
+      "Collection": null,
+      "In": 6,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI02|COL01|000C/0001|3/0/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "000C/0001",
+      "InterfaceNumber": 2,
+      "Collection": 1,
+      "In": 3,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI02|COL02|0001/0080|2/0/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "0001/0080",
+      "InterfaceNumber": 2,
+      "Collection": 2,
+      "In": 2,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI02|COL03|0001/0006|16/0/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "0001/0006",
+      "InterfaceNumber": 2,
+      "Collection": 3,
+      "In": 16,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI02|COL04|0001/000E|9/0/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "0001/000E",
+      "InterfaceNumber": 2,
+      "Collection": 4,
+      "In": 9,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI02|COL05|FFFF/0001|4/0/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "FFFF/0001",
+      "InterfaceNumber": 2,
+      "Collection": 5,
+      "In": 4,
+      "Out": 0,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI03|COL--|FF60/0061|33/33/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "FF60/0061",
+      "InterfaceNumber": 3,
+      "Collection": null,
+      "In": 33,
+      "Out": 33,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    },
+    {
+      "Fingerprint": "0C45:FDFD|MI04|COL--|FF60/0061|65/65/0",
+      "VidPid": "0C45:FDFD",
+      "Usage": "FF60/0061",
+      "InterfaceNumber": 4,
+      "Collection": null,
+      "In": 65,
+      "Out": 65,
+      "Feature": 0,
+      "ProductName": "2.4G Dongle"
+    }
+  ],
+  "Pids": [
+    "0C45:8009",
+    "0C45:FDFD"
+  ]
+}

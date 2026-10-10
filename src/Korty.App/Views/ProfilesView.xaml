@@ -1,0 +1,66 @@
+<UserControl x:Class="Korty.App.Views.ProfilesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <DataTemplate x:Key="ProfileCard">
+            <Border Style="{StaticResource Card}" Margin="0,0,0,16">
+                <StackPanel>
+                    <DockPanel>
+                        <Ellipse DockPanel.Dock="Left" Width="10" Height="10" Fill="{Binding DeviceBrush}" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding Title}" FontSize="18" FontWeight="SemiBold"/>
+                    </DockPanel>
+                    <TextBlock Text="{Binding DeviceState}" Style="{StaticResource Muted}" Margin="20,3,0,12"/>
+
+                    <TextBlock Text="ОФОРМЛЕНИЕ ЭКРАНА" Style="{StaticResource Caption}"/>
+                    <ComboBox ItemsSource="{Binding Designs}" SelectedItem="{Binding Design, Mode=TwoWay}" Margin="0,4,0,0">
+                        <ComboBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding Name}" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis"/></DataTemplate></ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Text="ПОДСВЕТКА" Style="{StaticResource Caption}" Margin="0,12,0,0"/>
+                    <TextBlock Text="{Binding RgbSummary}" Margin="0,4,0,0"/>
+
+                    <CheckBox Content="Восстанавливать при переподключении" IsChecked="{Binding RestoreOnReconnect}" Margin="0,14,0,0"/>
+                    <TextBlock Style="{StaticResource Muted}" Margin="26,2,0,0"
+                               Text="Это пожелание, а не гарантия: действие выполнится только если весь план проходит проверки записи (сейчас на реальном железе — нет)."/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,14,0,0">
+                        <Button Content="Построить план" Command="{Binding BuildPlanCommand}"/>
+                        <Button Style="{StaticResource PrimaryButton}" Content="{Binding ExecuteText}" Command="{Binding ExecuteCommand}" Margin="8,0,0,0"/>
+                    </StackPanel>
+                    <TextBlock Text="{Binding PlanVerdict}" Foreground="{Binding PlanBrush}" Margin="0,12,0,4" Visibility="{Binding HasPlan, Converter={StaticResource B2V}}"/>
+                    <ItemsControl ItemsSource="{Binding Steps}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,3">
+                                    <Grid.ColumnDefinitions><ColumnDefinition Width="22"/><ColumnDefinition Width="130"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Mark}" Foreground="{Binding Brush}" FontWeight="Bold"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Title}" FontWeight="SemiBold" FontSize="12.5"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding Detail}" Style="{StaticResource Muted}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="300"/></Grid.ColumnDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,16,0">
+            <ContentControl Content="{Binding Usb}" ContentTemplate="{StaticResource ProfileCard}"/>
+        </ScrollViewer>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="0,0,16,0">
+            <ContentControl Content="{Binding Wireless}" ContentTemplate="{StaticResource ProfileCard}"/>
+        </ScrollViewer>
+        <Border Grid.Column="2" Style="{StaticResource Card}" VerticalAlignment="Top">
+            <StackPanel>
+                <TextBlock Text="События подключения" Style="{StaticResource H2}"/>
+                <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,8" Text="Отключение подтверждается двумя опросами подряд, чтобы не реагировать на кратковременную переэнумерацию."/>
+                <ItemsControl ItemsSource="{Binding Events}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate><TextBlock Text="{Binding}" Style="{StaticResource Mono}" FontSize="11" Margin="0,0,0,4"/></DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

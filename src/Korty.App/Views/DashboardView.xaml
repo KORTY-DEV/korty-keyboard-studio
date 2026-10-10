@@ -1,0 +1,87 @@
+<UserControl x:Class="Korty.App.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:Korty.App.Controls">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="340"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,20,0">
+            <StackPanel>
+                <Border Style="{StaticResource Card}">
+                    <StackPanel>
+                        <DockPanel>
+                            <Border DockPanel.Dock="Right" Background="{StaticResource Surface2Brush}" CornerRadius="9" Padding="3" VerticalAlignment="Top">
+                                <StackPanel Orientation="Horizontal">
+                                    <RadioButton Style="{StaticResource Segment}" GroupName="dashTarget" Content="USB-C" IsChecked="{Binding UsbTarget, Mode=TwoWay}"/>
+                                    <RadioButton Style="{StaticResource Segment}" GroupName="dashTarget" Content="2.4 GHz" IsChecked="{Binding WirelessTarget, Mode=TwoWay}"/>
+                                </StackPanel>
+                            </Border>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Headline}" FontSize="24" FontWeight="SemiBold" Foreground="{Binding HeadlineBrush}"/>
+                                <TextBlock Text="{Binding SubHeadline}" Style="{StaticResource Muted}" Margin="0,4,12,0"/>
+                            </StackPanel>
+                        </DockPanel>
+                        <c:KeyboardView Margin="0,18,0,4" HorizontalAlignment="Stretch"
+                                        KeyColor="{Binding KeyColor}" Brightness="{Binding Brightness}" Active="{Binding Active}"
+                                        ScreenImage="{Binding ScreenImage}" ScreenBlack="{Binding ScreenBlack}" ScreenCaption="{Binding ScreenCaption}"/>
+                        <TextBlock Style="{StaticResource Muted}" Margin="0,6,0,0"
+                                   Text="Схема условная: раскладка не является точной картой клавиш, подсветка показывает цвет и яркость профиля выбранного подключения."/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource Card}" Margin="0,16,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Что доступно сейчас" Style="{StaticResource H2}"/>
+                        <TextBlock Style="{StaticResource Muted}" Margin="0,2,0,10" Text="Что работает, что требует USB-C и что недоступно на штатной прошивке."/>
+                        <ItemsControl ItemsSource="{Binding Capabilities}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,0,0,10">
+                                        <Grid.ColumnDefinitions><ColumnDefinition Width="250"/><ColumnDefinition Width="190"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="13"/>
+                                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top">
+                                            <Ellipse Width="7" Height="7" Fill="{Binding Brush}" Margin="0,5,7,0" VerticalAlignment="Top"/>
+                                            <TextBlock Text="{Binding Status}" Foreground="{Binding Brush}" FontSize="12.5"/>
+                                        </StackPanel>
+                                        <TextBlock Grid.Column="2" Text="{Binding Detail}" Style="{StaticResource Muted}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <DockPanel Margin="0,0,0,10">
+                    <Button DockPanel.Dock="Right" Content="Обновить" Command="{Binding RefreshCommand}" Padding="12,5"/>
+                    <TextBlock Text="Обнаруженные устройства" Style="{StaticResource H2}" VerticalAlignment="Center"/>
+                </DockPanel>
+                <ItemsControl ItemsSource="{Binding Devices}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource Card}" Margin="0,0,0,12">
+                                <StackPanel>
+                                    <DockPanel>
+                                        <Ellipse DockPanel.Dock="Left" Width="9" Height="9" Fill="{Binding Brush}" Margin="0,0,9,0"/>
+                                        <TextBlock Text="{Binding VidPid}" Style="{StaticResource Mono}" DockPanel.Dock="Right" Foreground="{StaticResource MutedBrush}"/>
+                                        <TextBlock Text="{Binding Title}" FontWeight="SemiBold"/>
+                                    </DockPanel>
+                                    <TextBlock Text="{Binding Summary}" Style="{StaticResource Muted}" Margin="0,6,0,0"/>
+                                    <TextBlock Text="{Binding Notes}" Style="{StaticResource Muted}" Margin="0,8,0,0" Foreground="#A9AEBB"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Border Style="{StaticResource Card}" Background="{StaticResource BgBrush}">
+                    <TextBlock Style="{StaticResource Muted}" Text="Обнаружение только читает дескрипторы HID (нулевой доступ). Чужие устройства даже не открываются. Если подключены и кабель, и донгл, они показываются как два отдельных устройства."/>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

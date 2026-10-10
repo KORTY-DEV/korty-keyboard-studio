@@ -1,0 +1,629 @@
+{
+ "source": "kabelklaus/ajazz-ak820-pro app.js (MIT)",
+ "appJsSha256": "52e8215cb4e6cd97b9a1cea9d9d2fbe75902f4234970e54a3230741da1ed0844",
+ "framing": {
+  "reportId": 0,
+  "featureDataBytes": 64,
+  "outputDataBytes": 4096,
+  "defaults": {
+   "saveByte8": 0,
+   "saveFinish": false,
+   "imgVariant": "aks075",
+   "brightness": 5,
+   "speed": 3,
+   "maxFrames": 120
+  }
+ },
+ "pixelPattern": "r=(2x+10i)&255 g=(2y+3i)&255 b=(3(x+y)+7i)&255",
+ "lighting": [
+  {
+   "params": {
+    "mode": 1,
+    "r": 255,
+    "g": 69,
+    "b": 0,
+    "rainbow": false,
+    "bright": 5,
+    "speed": 3,
+    "dir": 0,
+    "saveByte8": 0,
+    "finish": false
+   },
+   "seq": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "MODE_CFG",
+     "kind": "feature",
+     "hex": "04130000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "MODE_DATA",
+     "kind": "feature",
+     "hex": "01ff45000000000000050300000055aa000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": false,
+     "settleMs": 40
+    },
+    {
+     "label": "SAVE",
+     "kind": "feature",
+     "hex": "04020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 100,
+     "handshake": true,
+     "settleMs": 0
+    }
+   ]
+  },
+  {
+   "params": {
+    "mode": 19,
+    "r": 1,
+    "g": 2,
+    "b": 3,
+    "rainbow": true,
+    "bright": 2,
+    "speed": 5,
+    "dir": 3,
+    "saveByte8": 1,
+    "finish": true
+   },
+   "seq": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "MODE_CFG",
+     "kind": "feature",
+     "hex": "04130000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "MODE_DATA",
+     "kind": "feature",
+     "hex": "130102030000000001020503000055aa000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": false,
+     "settleMs": 40
+    },
+    {
+     "label": "SAVE",
+     "kind": "feature",
+     "hex": "04020000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 100,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "FINISH",
+     "kind": "feature",
+     "hex": "04f00000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 100,
+     "handshake": true,
+     "settleMs": 0
+    }
+   ]
+  },
+  {
+   "params": {
+    "mode": 0,
+    "r": 0,
+    "g": 0,
+    "b": 0,
+    "rainbow": false,
+    "bright": 0,
+    "speed": 0,
+    "dir": 1,
+    "saveByte8": 0,
+    "finish": false
+   },
+   "seq": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "MODE_CFG",
+     "kind": "feature",
+     "hex": "04130000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "MODE_DATA",
+     "kind": "feature",
+     "hex": "000000000000000000000001000055aa000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": false,
+     "settleMs": 40
+    },
+    {
+     "label": "SAVE",
+     "kind": "feature",
+     "hex": "04020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 100,
+     "handshake": true,
+     "settleMs": 0
+    }
+   ]
+  }
+ ],
+ "clock": [
+  {
+   "date": [
+    2026,
+    10,
+    9,
+    13,
+    5,
+    7
+   ],
+   "saveByte8": 0,
+   "finish": false,
+   "seq": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "TIME_CFG",
+     "kind": "feature",
+     "hex": "04280000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "TIME_DATA",
+     "kind": "feature",
+     "hex": "00015a1a0a090d05070004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aa55",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": false,
+     "settleMs": 40
+    },
+    {
+     "label": "SAVE",
+     "kind": "feature",
+     "hex": "04020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 100,
+     "handshake": true,
+     "settleMs": 0
+    }
+   ]
+  },
+  {
+   "date": [
+    2031,
+    12,
+    31,
+    23,
+    59,
+    58
+   ],
+   "saveByte8": 1,
+   "finish": true,
+   "seq": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "TIME_CFG",
+     "kind": "feature",
+     "hex": "04280000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "TIME_DATA",
+     "kind": "feature",
+     "hex": "00015a1f0c1f173b3a0004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aa55",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": false,
+     "settleMs": 40
+    },
+    {
+     "label": "SAVE",
+     "kind": "feature",
+     "hex": "04020000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 100,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "FINISH",
+     "kind": "feature",
+     "hex": "04f00000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 100,
+     "handshake": true,
+     "settleMs": 0
+    }
+   ]
+  }
+ ],
+ "standby": [
+  {
+   "level": 0,
+   "saveByte8": 0,
+   "finish": false,
+   "seq": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "SLEEP_CFG",
+     "kind": "feature",
+     "hex": "04170100000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "SLEEP_DATA",
+     "kind": "feature",
+     "hex": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aa55",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": false,
+     "settleMs": 40
+    },
+    {
+     "label": "SAVE",
+     "kind": "feature",
+     "hex": "04020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 100,
+     "handshake": true,
+     "settleMs": 0
+    }
+   ]
+  },
+  {
+   "level": 1,
+   "saveByte8": 0,
+   "finish": false,
+   "seq": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "SLEEP_CFG",
+     "kind": "feature",
+     "hex": "04170100000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "SLEEP_DATA",
+     "kind": "feature",
+     "hex": "0000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aa55",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": false,
+     "settleMs": 40
+    },
+    {
+     "label": "SAVE",
+     "kind": "feature",
+     "hex": "04020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 100,
+     "handshake": true,
+     "settleMs": 0
+    }
+   ]
+  },
+  {
+   "level": 2,
+   "saveByte8": 0,
+   "finish": false,
+   "seq": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "SLEEP_CFG",
+     "kind": "feature",
+     "hex": "04170100000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "SLEEP_DATA",
+     "kind": "feature",
+     "hex": "0000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aa55",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": false,
+     "settleMs": 40
+    },
+    {
+     "label": "SAVE",
+     "kind": "feature",
+     "hex": "04020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 100,
+     "handshake": true,
+     "settleMs": 0
+    }
+   ]
+  },
+  {
+   "level": 3,
+   "saveByte8": 0,
+   "finish": false,
+   "seq": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "SLEEP_CFG",
+     "kind": "feature",
+     "hex": "04170100000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 40,
+     "handshake": true,
+     "settleMs": 0
+    },
+    {
+     "label": "SLEEP_DATA",
+     "kind": "feature",
+     "hex": "0000000000000000030000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aa55",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": false,
+     "settleMs": 40
+    },
+    {
+     "label": "SAVE",
+     "kind": "feature",
+     "hex": "04020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 100,
+     "handshake": true,
+     "settleMs": 0
+    }
+   ]
+  }
+ ],
+ "images": [
+  {
+   "variant": "aks075",
+   "delaysMs": [
+    0
+   ],
+   "frames": 1,
+   "totalChunks": 9,
+   "payloadLength": 36864,
+   "headerHex": "0100ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+   "payloadSha256": "c49b89c84604b014a85cbfbfb0430e7b8b8d51f052135e3ab49760445e362ff7",
+   "firstChunkHex64": "0100ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+   "lastChunkSha256": "c2787e8013950292f92b6476a66350ed9e5121b6cb6fe9f7dcf5b8121bb4b336",
+   "before": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": true
+    },
+    {
+     "label": "IMAGE_CFG",
+     "kind": "feature",
+     "hex": "04720300000000000900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": true
+    }
+   ],
+   "after": [
+    {
+     "label": "SAVE",
+     "kind": "feature",
+     "hex": "04020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": true
+    }
+   ],
+   "chunkAckWaitMs": 300,
+   "chunkBytes": 4096
+  },
+  {
+   "variant": "aks075",
+   "delaysMs": [
+    100,
+    250,
+    7,
+    1000
+   ],
+   "frames": 4,
+   "totalChunks": 33,
+   "payloadLength": 135168,
+   "headerHex": "04327d04ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+   "payloadSha256": "f3ef3fb64ae78ad5562e7d67f1c1dde9d63b123be4a08543abe3bafb845603b1",
+   "firstChunkHex64": "04327d04ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+   "lastChunkSha256": "5000cba82ceb5c14a6210f7a27f6ba7ab951009cdaf59899cd241e712cf9032f",
+   "before": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": true
+    },
+    {
+     "label": "IMAGE_CFG",
+     "kind": "feature",
+     "hex": "04720300000000002100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": true
+    }
+   ],
+   "after": [
+    {
+     "label": "SAVE",
+     "kind": "feature",
+     "hex": "04020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": true
+    }
+   ],
+   "chunkAckWaitMs": 300,
+   "chunkBytes": 4096
+  },
+  {
+   "variant": "gohv",
+   "delaysMs": [
+    100,
+    250,
+    7,
+    1000
+   ],
+   "frames": 4,
+   "totalChunks": 33,
+   "payloadLength": 135168,
+   "headerHex": "04327d04ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+   "payloadSha256": "f3ef3fb64ae78ad5562e7d67f1c1dde9d63b123be4a08543abe3bafb845603b1",
+   "firstChunkHex64": "04327d04ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+   "lastChunkSha256": "5000cba82ceb5c14a6210f7a27f6ba7ab951009cdaf59899cd241e712cf9032f",
+   "before": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": true
+    },
+    {
+     "label": "IMAGE_CFG",
+     "kind": "feature",
+     "hex": "04720200000000002100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": true
+    }
+   ],
+   "after": [
+    {
+     "label": "FINISH",
+     "kind": "feature",
+     "hex": "04f00000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": true
+    }
+   ],
+   "chunkAckWaitMs": 300,
+   "chunkBytes": 4096
+  },
+  {
+   "variant": "aks075",
+   "delaysMs": [
+    40,
+    53,
+    66,
+    79,
+    92,
+    105,
+    118,
+    131,
+    144,
+    157,
+    170,
+    183,
+    196,
+    209,
+    222,
+    235,
+    248,
+    261,
+    274,
+    287,
+    300,
+    313,
+    326,
+    339,
+    352,
+    365,
+    378,
+    391,
+    404,
+    417
+   ],
+   "frames": 30,
+   "totalChunks": 241,
+   "payloadLength": 987136,
+   "headerHex": "1e141b21282e353b42484f555c62696f767c838990969da3aab0b7bdc4cad1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+   "payloadSha256": "523e0252b163392858b944e4335551cf09b9344d97c6dabd2930dd14e1220c8e",
+   "firstChunkHex64": "1e141b21282e353b42484f555c62696f767c838990969da3aab0b7bdc4cad1ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+   "lastChunkSha256": "61cb716d7a1d43470ea49ef32963992a37e1656980932b51e1bab33b988ca6bc",
+   "before": [
+    {
+     "label": "START",
+     "kind": "feature",
+     "hex": "04180000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": true
+    },
+    {
+     "label": "IMAGE_CFG",
+     "kind": "feature",
+     "hex": "0472030000000000f100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": true
+    }
+   ],
+   "after": [
+    {
+     "label": "SAVE",
+     "kind": "feature",
+     "hex": "04020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "sleepBeforeHandshakeMs": 0,
+     "handshake": true
+    }
+   ],
+   "chunkAckWaitMs": 300,
+   "chunkBytes": 4096
+  }
+ ]
+}

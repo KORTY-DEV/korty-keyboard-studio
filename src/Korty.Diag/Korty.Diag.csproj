@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>Korty.Diag</RootNamespace>
+    <AssemblyName>korty-diag</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Korty.Core\Korty.Core.csproj" />
+    <ProjectReference Include="..\Korty.Hid.Windows\Korty.Hid.Windows.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,108 @@
+<UserControl x:Class="Korty.App.Views.DiagnosticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <TabControl>
+        <TabItem Header="Интерфейсы">
+            <Border Style="{StaticResource Card}" Padding="0">
+                <DockPanel>
+                    <DockPanel DockPanel.Dock="Top" Margin="16,14,16,10">
+                        <Button DockPanel.Dock="Right" Content="Обновить" Command="{Binding RefreshCommand}"/>
+                        <TextBlock Text="{Binding Summary}" Style="{StaticResource Muted}" VerticalAlignment="Center"/>
+                    </DockPanel>
+                    <DataGrid ItemsSource="{Binding Interfaces}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="УСТРОЙСТВО" Binding="{Binding Device}" Width="190"/>
+                            <DataGridTextColumn Header="MI/COL" Binding="{Binding Mi}" Width="90"/>
+                            <DataGridTextColumn Header="USAGE" Binding="{Binding Usage}" Width="100"/>
+                            <DataGridTextColumn Header="IN/OUT/FEAT" Binding="{Binding Lengths}" Width="110"/>
+                            <DataGridTextColumn Header="РОЛЬ" Binding="{Binding Role}" Width="90"/>
+                            <DataGridTextColumn Header="ЧТО ГОВОРЯТ ИСТОЧНИКИ (не подтверждено)" Binding="{Binding Hint}" Width="*">
+                                <DataGridTextColumn.ElementStyle><Style TargetType="TextBlock" BasedOn="{StaticResource Muted}"><Setter Property="TextWrapping" Value="Wrap"/></Style></DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </Border>
+        </TabItem>
+
+        <TabItem Header="Сравнение (кабель ↔ донгл)">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <Border Style="{StaticResource Card}">
+                        <StackPanel>
+                            <TextBlock Text="Безопасное определение: какой PID чему принадлежит" Style="{StaticResource H2}"/>
+                            <TextBlock Style="{StaticResource Muted}" Margin="0,6,0,10"
+                                       Text="1) Вытащите донгл из ПК, подключите клавиатуру кабелем в USB-режиме → «Снимок A».&#x0A;2) Отключите кабель, вставьте донгл, переключите клавиатуру в 2.4 GHz → «Снимок B».&#x0A;3) По желанию подключите оба → «Снимок C».&#x0A;Затем сравните. Снимки состоят только из прочитанных дескрипторов — клавиатуре ничего не отправляется."/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Снимок A · только кабель" Command="{Binding SnapA}"/>
+                                <Button Content="Снимок B · только донгл" Command="{Binding SnapB}" Margin="8,0,0,0"/>
+                                <Button Content="Снимок C · оба" Command="{Binding SnapC}" Margin="8,0,0,0"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding SnapshotState}" Style="{StaticResource Mono}" Foreground="{StaticResource MutedBrush}" Margin="0,10,0,0"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                                <Button Style="{StaticResource PrimaryButton}" Content="Сравнить A ↔ B" Command="{Binding CompareABCommand}"/>
+                                <Button Content="Сравнить A ↔ C" Command="{Binding CompareACCommand}" Margin="8,0,0,0"/>
+                                <Button Content="Сохранить снимки…" Command="{Binding SaveSnapshotsCommand}" Margin="16,0,0,0"/>
+                                <Button Content="Загрузить…" Command="{Binding LoadSnapshotsCommand}" Margin="8,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource Card}" Margin="0,14,0,0">
+                        <ItemsControl ItemsSource="{Binding Comparison}">
+                            <ItemsControl.ItemTemplate><DataTemplate><TextBlock Text="{Binding}" Style="{StaticResource Mono}" Margin="0,0,0,5"/></DataTemplate></ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <TabItem Header="Заметки о прошивке">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <Border Style="{StaticResource Card}">
+                        <TextBlock Style="{StaticResource Muted}" Text="Рабочие заметки о поведении прошивки: что известно, что только предполагается и как это безопасно проверить. «Не проверено» — гипотеза, не факт."/>
+                    </Border>
+                    <ItemsControl ItemsSource="{Binding Hypotheses}" Margin="0,12,0,0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Style="{StaticResource Card}" Margin="0,0,0,12">
+                                    <StackPanel>
+                                        <DockPanel>
+                                            <Border DockPanel.Dock="Right" Style="{StaticResource Pill}" BorderBrush="{StaticResource BorderBrush}">
+                                                <TextBlock Text="{Binding Status}" FontSize="11" Foreground="{StaticResource WarnBrush}"/>
+                                            </Border>
+                                            <TextBlock Text="{Binding Id}" FontWeight="Bold" Foreground="{StaticResource AccentBrush}" Margin="0,0,10,0"/>
+                                            <TextBlock Text="{Binding Title}" FontWeight="SemiBold"/>
+                                        </DockPanel>
+                                        <TextBlock Text="ОСНОВАНИЕ" Style="{StaticResource Caption}" Margin="0,10,0,2"/>
+                                        <TextBlock Text="{Binding Evidence}" Style="{StaticResource Muted}"/>
+                                        <TextBlock Text="КАК ПРОВЕРИТЬ" Style="{StaticResource Caption}" Margin="0,8,0,2"/>
+                                        <TextBlock Text="{Binding Test}" Style="{StaticResource Muted}"/>
+                                        <TextBlock Text="{Binding NeedsHardware, StringFormat=Нужно железо / запись: {0}}" Style="{StaticResource Caption}" Margin="0,8,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+
+        <TabItem Header="Журнал">
+            <Border Style="{StaticResource Card}" Padding="0">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="16,14,16,10">
+                        <Button Content="Экспорт отчёта (JSON)…" Command="{Binding ExportReportCommand}"/>
+                        <Button Content="Копировать журнал" Command="{Binding CopyLogCommand}" Margin="8,0,0,0"/>
+                        <Button Content="Очистить вид" Command="{Binding ClearViewCommand}" Margin="8,0,0,0"/>
+                    </StackPanel>
+                    <ListBox ItemsSource="{Binding Entries}" Margin="10,0,10,10" VirtualizingPanel.IsVirtualizing="True">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate><TextBlock Text="{Binding}" Style="{StaticResource Mono}" FontSize="11.5" TextWrapping="NoWrap"/></DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+            </Border>
+        </TabItem>
+    </TabControl>
+</UserControl>

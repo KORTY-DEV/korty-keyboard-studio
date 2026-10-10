@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>Korty.App</RootNamespace>
+    <AssemblyName>KORTY.KeyboardStudio</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\korty.ico</ApplicationIcon>
+    <SatelliteResourceLanguages>en;ru</SatelliteResourceLanguages>
+  </PropertyGroup>
+  <ItemGroup>
+    <Resource Include="Assets\korty.ico" />
+    <Content Include="..\..\examples\korty-24frames.gif" Link="examples\korty-24frames.gif" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Korty.Core\Korty.Core.csproj" />
+    <ProjectReference Include="..\Korty.Rendering\Korty.Rendering.csproj" />
+    <ProjectReference Include="..\Korty.Hid.Windows\Korty.Hid.Windows.csproj" />
+  </ItemGroup>
+</Project>
